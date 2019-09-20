@@ -3,6 +3,7 @@ from datetime import timedelta
 
 from django import forms
 from django.core.validators import MaxValueValidator
+from django.contrib.postgres.forms import JSONField
 from django.db.models import Q
 from django.db.models.constants import LOOKUP_SEP
 from django.forms.utils import pretty_name
@@ -802,3 +803,7 @@ class FilterMethod:
             (parent.__class__.__module__, parent.__class__.__name__, instance.method)
 
         return method
+
+
+class JSONFilter(Filter):
+    field_class = JSONField()
